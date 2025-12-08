@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan — Botanical Luxury</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Prevent horizontal overflow */
+    html,body { overflow-x: hidden; }
+
+    :root{
+      --ivory:#f8f4ee;
+      --emerald:#0f6b4a;
+      --gold:#d4af37;
+      --muted:#6b6b6b;
+      --card-w:1100px;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Montserrat,system-ui,Segoe UI,Roboto,Arial;
+      background:linear-gradient(180deg,#fbf9f6,#f2efe9);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    img{max-width:100%;display:block}
+
+    /* wrapper + card */
+    .wrap{max-width:var(--card-w);margin:28px auto;padding:20px;position:relative}
+    .card{
+      position:relative;
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,250,0.9));
+      border-radius:var(--radius);
+      padding:28px;
+      padding-top:32px;
+      box-shadow:0 18px 40px rgba(10,20,15,0.06);
+      border:1px solid rgba(13,84,59,0.06);
+      overflow:hidden;
+    }
+
+    /* minimal leaf ornament (model B) */
+    .leaf-min {
+      position:absolute;
+      left:-60px;
+      bottom:-30px;
+      width:260px;
+      opacity:0.12;
+      pointer-events:none;
+      z-index:0;
+      transform:rotate(-12deg);
+    }
+    /* make sure content sits above ornament */
+    .card > * { position:relative; z-index:1; }
+
+/* opening fullscreen overlay */
+.opening-full {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+/* teks nama pengantin */
+.opening .names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 92px); /* menyesuaikan layar */
+  line-height: 1.05;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--gold), #e6c86b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  word-break: break-word;   /* agar tidak terpotong */
+  overflow-wrap: break-word;
+  margin: 6px 0;
+}
+
+/* konten opening */
+.opening-content {
+  padding: 28px 12px; /* memberi ruang di sisi layar kecil */
+  text-align: center;
+}
+.opening-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/bg-cover1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+  z-index: 0;
+}
+
+/* responsive untuk layar kecil */
+@media (max-width: 480px) {
+  .opening .names {
+    font-size: clamp(24px, 10vw, 60px);
+  }
+  .opening h1 {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+  .opening p {
+    font-size: 14px;
+  }
+}
+  
+
+
+  /* 🔥 Tambahan WAJIB agar benar-benar center di HP */
+.opening-full {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.opening-full.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
+
+.opening-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("img/bg-cover2.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.55) contrast(.98);
+  z-index: 0;
+}
+.opening-content{
+  position:relative;
+  z-index:1;
+  color:#fff;
+  text-align:center;
+  padding:28px;
+  max-width:920px;
+}
+.opening .brand-small { font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:.6px;margin-bottom:6px }
+.opening h1{ font-family:'Playfair Display',serif; font-size:clamp(28px,6.5vw,44px); margin:6px 0 8px; color:#fff; line-height:1.05 }
+.opening .names { font-family:'Playfair Display',serif; font-size:clamp(34px,9vw,86px); line-height:1; font-weight:600; background:linear-gradient(90deg,var(--gold), #e6c86b); -webkit-background-clip:text; background-clip:text; color:transparent; margin:6px 0 }
+.opening p { margin:12px 0 18px; color:rgba(255,255,255,0.92); font-size:16px; max-width:760px; margin-left:auto;margin-right:auto }
+
+.btn {
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  font-size:15px;
+  margin:6px;
+}
+.btn-primary{ background:linear-gradient(90deg,var(--emerald),#2f6b52); color:white; box-shadow:0 10px 30px rgba(15,107,74,0.12) }
+.btn-ghost{ background: rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.14) }
+
+    /* header (brand only) */
+    header { display:flex; justify-content:flex-end; align-items:center; gap:8px; margin-bottom:12px; }
+    .brand-inline { font-weight:700; color:var(--emerald); font-size:13px; }
+
+    /* sections */
+    section{padding:28px 0; border-bottom:1px solid rgba(0,0,0,0.03) }
+    .section-inner{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+    @media (max-width:980px){ .section-inner{grid-template-columns:1fr} }
+    h1,h2,h3{ font-family:'Playfair Display',serif; color:var(--emerald); margin:6px 0 }
+    .names-small{ font-family:'Playfair Display',serif; font-size:28px; color:var(--emerald) }
+    .muted{ color:var(--muted); font-size:14px }
+
+    /* hero / opening content inside card (after open) */
+    .hero{ display:flex; gap:20px; align-items:center; margin-top:8px }
+    .hero .left{ flex:1 }
+    .cover-card{ border-radius:12px; padding:18px; background:linear-gradient(180deg, rgba(15,107,74,0.03), rgba(15,107,74,0.01)); border:1px solid rgba(15,107,74,0.04) }
+
+    /* responsive name (avoid cut) */
+    .hero-nama {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(26px,6vw,40px);
+      line-height:1.05;
+      word-break:break-word;
+      margin:6px 0;
+    }
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    @media (max-width:900px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+    .gallery .item{ height:150px; border-radius:10px; overflow:hidden; object-fit:cover }
+
+    /* rsvp form */
+    form .row{ display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap }
+    input,textarea,select{ padding:10px; border-radius:8px; border:1px solid #e6e6e6; font-size:15px; width:100% }
+
+    /* reveal animation */
+    .reveal{ opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.4,1) }
+    .reveal.show{ opacity:1; transform:translateY(0) }
+
+    /* music control */
+    .music-control {
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:99999;
+    }
+    #musicBtn {
+      width:54px; height:54px; border-radius:50%; border:none; cursor:pointer;
+      background:rgba(255,255,255,0.95); box-shadow:0 8px 24px rgba(0,0,0,0.12); font-size:20px;
+    }
+
+    footer{ text-align:center; color:var(--muted); margin-top:18px; font-size:13px }
+
+    /* small utility */
+    .text-center{text-align:center}
+    .small{font-size:13px;color:var(--muted)}
+
+/* BACKGROUND FOTO */
+.opening-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/bg-cover3.jpg'); /* ganti foto sesuai tema */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+  z-index: 0;
+}
+
+/* CONTENT */
+.opening-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Fade-in animation */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Judul */
+.opening-content .title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 5vw, 32px);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Nama mempelai */
+.opening-content .names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 50px);
+  font-weight: 700;
+  background: linear-gradient(90deg, #d4af37, #e6c86b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  word-break: break-word;
+  margin-bottom: 8px;
+}
+
+/* Tanggal */
+.opening-content .date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(16px, 4vw, 20px);
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Tombol */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg,#0f6b4a,#2f6b52);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* Responsive HP */
+@media(max-width:480px){
+  .opening-content .names {
+    font-size: clamp(22px, 10vw, 42px);
+  }
+  .opening-content .title {
+    font-size: clamp(18px, 6vw, 28px);
+  }
+  .opening-content .date {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+}
+/* Fullscreen opening */
+.opening-full {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 9999;
+  overflow: hidden;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  background-color: #000;
+}
+
+.opening-full.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
+
+/* Background Foto */
+.opening-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/bg-cover3.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55);
+  z-index: 0;
+}
+
+/* Content */
+.opening-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+/* Fade-in animation */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Text */
+.opening-content .title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 5vw, 32px);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.opening-content .names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 50px);
+  font-weight: 700;
+  background: linear-gradient(90deg, #d4af37, #e6c86b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  word-break: break-word;
+  margin-bottom: 8px;
+}
+.opening-content .date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(16px, 4vw, 20px);
+  margin-bottom: 20px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(90deg,#0f6b4a,#2f6b52);
+  color: #fff;
+}
+.btn-ghost {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* Music control */
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+}
+#musicBtn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  font-size: 20px;
+}
+
+/* Responsive HP */
+@media(max-width:480px){
+  .opening-content .names {
+    font-size: clamp(22px, 10vw, 42px);
+  }
+  .opening-content .title {
+    font-size: clamp(18px, 6vw, 28px);
+  }
+  .opening-content .date {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+}
+
+/* opening content */
+.opening-content {
+  text-align: center;
+  max-width: 920px;
+  width: 100%;
+  padding: 28px 12px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* nama pengantin */
+.opening .names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 92px);
+  line-height: 1.05;
+  font-weight: 600;
+  background: linear-gradient(90deg, #d4af37, #e6c86b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin: 6px 0;
+}
+
+/* responsive HP */
+@media (max-width: 480px) {
+  .opening .names {
+    font-size: clamp(24px, 10vw, 60px);
+  }
+  .opening h1 {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+  .opening p {
+    font-size: 14px;
+  }
+}
+
+/* nama pengantin */
+.opening .names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 8vw, 92px);
+  line-height: 1.05;
+  font-weight: 600;
+  background: linear-gradient(90deg, #d4af37, #e6c86b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin: 6px 0;
+}
+
+/* responsive untuk HP */
+@media (max-width: 480px) {
+  .opening .names {
+    font-size: clamp(24px, 10vw, 60px);
+  }
+  .opening h1 {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+  .opening p {
+    font-size: 14px;
+  }
+}
+</style>
+
+  <!-- small music control (toggle after opening) -->
+  <div class="music-control" id="musicControl" style="display:none">
+    <button id="musicBtn" title="Play / Pause">♫</button>
+  </div>
+
+  <div class="wrap">
+    <div class="card" role="application" aria-label="Undangan Digital — Botanical Luxury">
+      <!-- minimal leaf ornament (model B) -->
+      <img class="leaf-min" src="img/ornament-kanan.png" alt="" aria-hidden="true">
+
+      <!-- header (brand only, no nav) -->
+      <header>
+        <div class="brand-inline">Botanical Luxury</div>
+      </header>
+      
+<!-- FULLSCREEN OPENING -->
+<div class="opening-full" id="openingFull">
+  <div class="opening-bg"></div>
+  <div class="opening-content">
+    <h1 class="title fade">Wedding Invitation</h1>
+    <div class="names fade" style="--delay:0.2s">[Nama A] &amp; [Nama B]</div>
+    <div class="date fade" style="--delay:0.4s">Sabtu, 10 Januari 2026</div>
+    <div class="btn-group fade" style="--delay:0.6s">
+      <button class="btn btn-primary" id="openBtn">Buka Undangan</button>
+      <button class="btn btn-ghost" id="openNoMusic">Buka tanpa musik</button>
+    </div>
+  </div>
+</div>
+
+<!-- Musik background -->
+<audio id="bgMusic" loop preload="none">
+  <source src="music/backsound.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music control setelah buka undangan -->
+<div class="music-control" id="musicControl" style="display:none">
+  <button id="musicBtn" title="Play / Pause">♫</button>
+</div>
+      <!-- OPENING CARD (content shown after user closes the fullscreen) -->
+      <section id="openingCard" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <div class="hero">
+              <div class="left">
+                <div class="small muted">Dengan hormat</div>
+                <div class="hero-nama">[Nama Pengantin A] &amp; [Nama Pengantin B]</div>
+                <p class="muted">Kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara kami.</p>
+                <div class="orn" aria-hidden="true"></div>
+                <div style="display:flex;gap:12px;margin-top:10px">
+                  <a class="btn btn-primary" href="#rsvp">Konfirmasi</a>
+                  <button class="btn btn-ghost" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Lihat Galeri</button>
+                </div>
+              </div>
+
+              <aside class="cover-card text-center" style="width:320px">
+                <div style="height:200px;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#f3f1ee;display:grid;place-items:center">
+                  <img id="coverImg" src="img/bg-cover3.jpg" alt="Cover" style="width:100%;height:100%;object-fit:cover">
+                </div>
+                <div style="font-weight:700">Sabtu, 10 Januari 2026</div>
+                <div class="small muted" style="margin-top:6px">Gedung Serbaguna Magnolia — Jakarta</div>
+              </aside>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card">
+              <div style="font-weight:700">Save the Date</div>
+              <div id="countdown" class="small muted" style="margin-top:8px">--</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Quotes -->
+      <section id="quotes" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Quotes</h2>
+            <div class="orn" aria-hidden="true"></div>
+            <blockquote style="font-size:20px;margin:12px 0 0 0;color:#333;font-style:italic">“Love is composed of a single soul inhabiting two bodies.”</blockquote>
+            <p class="muted" style="margin-top:10px">— [Pengarang]</p>
+          </main>
+
+          <aside style="align-self:center">
+            <div style="background:linear-gradient(90deg,var(--gold),#e6c86b);height:120px;border-radius:12px;display:grid;place-items:center;color:white">
+              <div style="font-weight:700">Countdown</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Video -->
+      <section id="video" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Prewedding Video</h2>
+            <div class="video-wrap">
+              <iframe id="videoFrame" width="100%" height="380" src="video/prewweding.mp4" title="Prewedding Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </main>
+
+          <aside>
+            <div class="cover-card">
+              <div style="font-weight:700">Video Prewedding</div>
+              <p class="muted" style="margin-top:6px">Tekan play untuk melihat momen kami.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Couple -->
+      <section id="couple" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Mempelai</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div style="padding:14px;background:linear-gradient(180deg,#fff,#fff);border-radius:12px;">
+                <div class="couple">
+                  <div class="avatar"><img src="img/mempelai-pria.jpg" alt="Groom"></div>
+                  <div class="bio">
+                    <div style="font-weight:700">[Nama Lengkap Pria]</div>
+                    <p class="muted">[Keterangan singkat]</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding:14px;background:linear-gradient(180deg,#fff,#fff);border-radius:12px;">
+                <div class="couple">
+                  <div class="avatar"><img src="img/mempelai-wanita.jpg" alt="Bride"></div>
+                  <div class="bio">
+                    <div style="font-weight:700">[Nama Lengkap Wanita]</div>
+                    <p class="muted">[Keterangan singkat]</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card">
+              <div style="font-weight:700">Acara Utama</div>
+              <div class="muted" style="margin-top:6px">Akad: 10:00 WIB — Resepsi: 12:00 WIB</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Acara -->
+      <section id="acara" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Detail Acara & Lokasi</h2>
+            <div class="info-card">
+              <p style="margin:0"><strong>Akad</strong> — Sabtu, 10 Januari 2026, 10:00 WIB</p>
+              <p style="margin:6px 0 0 0"><strong>Resepsi</strong> — 12:00 — 15:00 WIB</p>
+              <p class="muted" style="margin-top:8px">Gedung Serbaguna Magnolia<br/>Jl. Bunga Raya No.10, Jakarta</p>
+            </div>
+
+            <div style="margin-top:12px" class="map">
+              <iframe src="https://www.google.com/maps?q=Jl.+Bunga+Raya+No.10+Jakarta&output=embed" width="100%" height="100%" style="border:0" loading="lazy"></iframe>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card">
+              <div style="font-weight:700">Petunjuk Akses</div>
+              <ol style="margin:8px 0 0 18px;padding:0" class="muted">
+                <li>Parkir di area gedung</li>
+                <li>Silakan tunjukkan undangan pada petugas</li>
+                <li>Dresscode: Smart Elegant (hijau/emas)</li>
+              </ol>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Galeri Foto</h2>
+            <div class="gallery" id="galleryGrid">
+              <img class="item" src="img/gallery1.jpg" alt="Foto 1">
+              <img class="item" src="img/gallery2.jpg" alt="Foto 2">
+              <img class="item" src="img/gallery3.jpg" alt="Foto 3">
+              <img class="item" src="img/gallery4.jpg" alt="Foto 4">
+              <img class="item" src="img/gallery5.jpg" alt="Foto 5">
+              <img class="item" src="img/gallery6.jpg" alt="Foto 6">
+            </div>
+          </main>
+
+          <aside>
+            <div class="cover-card">
+              <div style="font-weight:700">Momen Kami</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- RSVP -->
+      <section id="rsvp" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>RSVP & Ucapan Tamu</h2>
+            <form id="rsvpForm" style="padding:12px;background:#fff;border-radius:12px;">
+              <div class="row">
+                <input type="text" name="name" placeholder="Nama lengkap" required>
+                <input type="tel" name="phone" placeholder="No. HP (opsional)">
+              </div>
+              <div class="row">
+                <select name="attend" required>
+                  <option value="">Pilih kehadiran</option>
+                  <option value="hadir">Hadir</option>
+                  <option value="berhalangan">Berhalangan</option>
+                </select>
+                <input type="number" name="guests" placeholder="Jumlah tamu" min="0">
+              </div>
+              <div style="margin-bottom:10px">
+                <textarea name="message" placeholder="Ucapan / Doa (opsional)" rows="3"></textarea>
+              </div>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button type="reset" class="btn btn-ghost">Reset</button>
+                <button type="submit" class="btn btn-primary">Kirim RSVP & Ucapan</button>
+              </div>
+            </form>
+
+            <div style="margin-top:12px">
+              <h3 style="margin:0 0 8px 0">Daftar Ucapan</h3>
+              <div id="guestList" class="guest-list small">
+                <div class="small muted">Belum ada ucapan — jadi yang pertama!</div>
+              </div>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card">
+              <div style="font-weight:700">Konfirmasi</div>
+              <p class="muted">Hasil RSVP default membuka email (mailto). Ingin simpan ke Google Sheets? Minta aku tambahkan integrasi.</p>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <button class="btn btn-ghost" id="downloadCsv">Unduh CSV</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Gift -->
+      <section id="gift" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Gift & Hadiah Online</h2>
+            <div class="gift-grid">
+              <div class="gift-card">
+                <div style="font-weight:700">Bank ABC</div>
+                <div class="muted">1234567890 — Nama Pemilik</div>
+              </div>
+              <div class="gift-card">
+                <div style="font-weight:700">OVO / Gopay</div>
+                <div class="muted">0899-xxxx-xxxx</div>
+              </div>
+              <div class="gift-card">
+                <div style="font-weight:700">QR Transfer</div>
+                <div class="muted">Taruh QR di folder assets/qr.png</div>
+              </div>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card text-center">
+              <div style="font-weight:700">Doa & Harapan</div>
+              <p class="muted">Terima kasih atas doa dan dukungan Anda.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section id="closing" class="reveal" data-reveal>
+        <div class="section-inner">
+          <main>
+            <h2>Penutup</h2>
+            <div class="closing">
+              <p style="margin:0">“Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.”</p>
+              <p style="margin-top:12px;font-weight:700">[Nama Pengantin A] &amp; [Nama Pengantin B]</p>
+            </div>
+          </main>
+
+          <aside>
+            <div class="info-card text-center">
+              <div style="font-weight:700">Terima Kasih</div>
+              <div class="muted" style="margin-top:6px">Sampai jumpa di hari bahagia kami.</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer>© YELLOW -STD</footer>
+    </div>
+  </div>
+
+  <!-- html2canvas (optional) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    // Slide-up reveal
+    const revealElems = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, {threshold: 0.12});
+    revealElems.forEach(el => observer.observe(el));
+
+    // Opening controls
+    const openingFull = document.getElementById('openingFull');
+    const openBtn = document.getElementById('openBtn');
+    const openNoMusic = document.getElementById('openNoMusic');
+    const bgMusic = document.getElementById('bgMusic');
+    const musicControl = document.getElementById('musicControl');
+    const musicBtn = document.getElementById('musicBtn');
+
+    function openInvitation(playMusic = true){
+      // hide opening with fade
+      openingFull.classList.add('hidden');
+      setTimeout(()=> openingFull.style.display = 'none', 600);
+
+      // show music control if needed
+      if(playMusic){
+        // try to play (user already clicked)
+        bgMusic.play().catch(()=>{/*ignore*/});
+        musicControl.style.display = 'block';
+        musicBtn.textContent = '⏸';
+      } else {
+        musicControl.style.display = 'block';
+        musicBtn.textContent = '♫';
+      }
+    }
+
+    openBtn.addEventListener('click', () => openInvitation(true));
+    openNoMusic.addEventListener('click', () => openInvitation(false));
+
+    musicBtn && musicBtn.addEventListener('click', () => {
+      if(bgMusic.paused){
+        bgMusic.play();
+        musicBtn.textContent = '⏸';
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = '♫';
+      }
+    });
+
+    // small safety: pause music when leaving page
+    window.addEventListener('pagehide', () => { try{ bgMusic.pause(); }catch(e){} });
+
+
+
+    // countdown
+    (function countdown() {
+      const weddingDate = new Date(2026, 0, 10, 10, 0, 0); // adjust as needed
+      const el = document.getElementById('countdown');
+      if(!el) return;
+      function tick(){
+        const diff = weddingDate - new Date();
+        if(diff <= 0){ el.textContent = 'Hari H!'; clearInterval(timer); return; }
+        const days = Math.floor(diff/86400000);
+        const hours = Math.floor((diff%86400000)/3600000);
+        const mins = Math.floor((diff%3600000)/60000);
+        const secs = Math.floor((diff%60000)/1000);
+        el.textContent = `${String(days).padStart(2,'0')} Hari : ${String(hours).padStart(2,'0')} Jam : ${String(mins).padStart(2,'0')} Menit : ${String(secs).padStart(2,'0')} Detik`;
+      }
+      tick();
+      const timer = setInterval(tick,1000);
+    })();
+
+    // gallery lightbox simple
+    document.querySelectorAll('.gallery .item').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        const w = window.open('');
+        w.document.write(`<title>Foto</title><style>body{margin:0;display:grid;place-items:center;background:#111}img{max-width:100%;max-height:100vh}</style><img src="${img.src}" alt="">`);
+      });
+    });
+
+    // RSVP store local & mailto fallback
+    const form = document.getElementById('rsvpForm');
+    const guestList = document.getElementById('guestList');
+
+    function loadGuests(){
+      const data = JSON.parse(localStorage.getItem('guests')||'[]');
+      renderGuests(data);
+      return data;
+    }
+    function renderGuests(data){
+      if(!data.length){
+        guestList.innerHTML = '<div class="small muted">Belum ada ucapan — jadi yang pertama!</div>';
+        return;
+      }
+      guestList.innerHTML = '';
+      data.slice().reverse().forEach(g => {
+        const el = document.createElement('div');
+        el.style.padding = '8px';
+        el.style.borderBottom = '1px solid rgba(0,0,0,0.04)';
+        el.innerHTML = `<strong>${escapeHtml(g.name)}</strong> <span class="small muted"> — ${escapeHtml(g.attend)}</span><div class="small" style="margin-top:6px">${escapeHtml(g.message)}</div>`;
+        guestList.appendChild(el);
+      });
+    }
+    function escapeHtml(s){ return (s||'').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+    loadGuests();
+
+    form && form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const obj = Object.fromEntries(fd.entries());
+      const guests = loadGuests();
+      guests.push({
+        name: obj.name || 'Anonymous',
+        phone: obj.phone || '',
+        attend: obj.attend || '',
+        guests: obj.guests || '0',
+        message: obj.message || '',
+        time: new Date().toISOString()
+      });
+      localStorage.setItem('guests', JSON.stringify(guests));
+      renderGuests(guests);
+
+      const subject = encodeURIComponent('RSVP: ' + (obj.name || 'Tanpa nama'));
+      const body = encodeURIComponent(`Nama: ${obj.name||''}\nNo HP: ${obj.phone||''}\nKehadiran: ${obj.attend||''}\nJumlah tamu: ${obj.guests||''}\nPesan: ${obj.message||''}`);
+      // open mail client as fallback
+      window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+
+      form.reset();
+      alert('Terima kasih! Ucapan Anda tersimpan (demo lokal). Untuk menyimpan ke Google Sheets/Server, minta aku integrasikan.');
+    });
+
+    // Download CSV
+    document.getElementById('downloadCsv') && document.getElementById('downloadCsv').addEventListener('click', () => {
+      const data = JSON.parse(localStorage.getItem('guests')||'[]');
+      if(!data.length){ alert('Belum ada data tamu.'); return; }
+      const csv = [Object.keys(data[0]).join(',')].concat(data.map(r => Object.values(r).map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(','))).join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'guests.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // capture (html2canvas) example
+    async function capture(){
+      const el = document.querySelector('.card');
+      if(!window.html2canvas){ alert('html2canvas belum tersedia.'); return; }
+      const canvas = await html2canvas(el, {useCORS:true, scale:1.2});
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a'); a.href = url; a.download = 'invitation.png'; a.click();
+    }
+    
+</script>
+</body>
+</html>
