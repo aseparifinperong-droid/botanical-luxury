@@ -123,6 +123,102 @@
     .fade-up.show {opacity:1;transform:translateY(0);}
     .music-control {position:fixed;bottom:20px;right:20px;z-index:99999;}
     #musicBtn {width:54px; height:54px; border-radius:50%; border:none; cursor:pointer; background:rgba(255,255,255,0.95); box-shadow:0 8px 24px rgba(0,0,0,0.12); font-size:20px;}
+  /* ===== MOBILE RESPONSIVE FIX ===== */
+@media(max-width: 600px){
+
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  /* Hero */
+  .hero-orn {
+    height: auto !important;
+    padding: 24px 16px !important;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Couple block */
+  .couple-block {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* We Are Getting Married */
+  .we-are {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .we-are .left {
+    width: 100% !important;
+  }
+
+  .person-card {
+    width: 100% !important;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .person-card img {
+    height: auto !important;
+  }
+
+  /* Save the date */
+  .save-date {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* Event */
+  .event {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gallery-grid .left,
+  .gallery-grid .right {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+
+  .gallery-grid img {
+    height: auto !important;
+  }
+
+  .slider-track {
+    gap: 12px;
+  }
+
+  /* Timeline */
+  .timeline {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Gifts */
+  .gifts {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Wishes */
+  .wishes form .row {
+    flex-direction: column !important;
+  }
+
+  /* Closing */
+  .closing {
+    padding: 24px !important;
+  }
+}
+
+  
   </style>
 </head>
 <body>
@@ -359,5 +455,6 @@
 
 </body>
 </html>
+
 
 
