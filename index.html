@@ -179,55 +179,15 @@
   }
 
   /* --- GALERI GRID UTAMA --- */
-.gallery-grid img {
-  width: 100%;
-  height: auto !important;
-  object-fit: contain !important;
-  background: #fff;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-.gallery-grid .left,
-.gallery-grid .right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.gallery-grid .left .big {
-  grid-column: span 2;
-}
-
-@media(max-width: 600px){
-  .gallery-grid .left,
-  .gallery-grid .right {
-    grid-template-columns: 1fr;
-  }
-  .gallery-grid .left .big {
-    grid-column: span 1;
-  }
-}
-
-/* --- SLIDER FOTO --- */
-.gallery-slider .slide {
-  min-width: 260px;
-  height: auto !important;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
+.gallery-grid img,
 .gallery-slider .slide img {
   width: 100%;
-  height: auto !important;
-  object-fit: contain !important;
-  background: #fff;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transform: scale(0.9);
+  transition: transform .3s ease;
 }
-
   /* Timeline */
   .timeline {
     grid-template-columns: 1fr !important;
@@ -374,25 +334,41 @@
           <a href="https://youtube.com/" target="_blank" class="btn-live">Tonton Live</a>
         </section>
 
-        <!-- GALLERY -->
-        <section class="gallery-grid fade-up" id="gallery">
-          <div class="left">
-            <div class="big"><img src="img/gallery1.jpg" alt=""></div>
-            <div class="big"><img src="img/gallery2.jpg" alt=""></div>
-          </div>
-          <div class="right">
-            <div class="big"><img src="img/gallery3.jpg" alt=""></div>
-            <div class="big"><img src="img/gallery4.jpg" alt=""></div>
-          </div>
-        </section>
-        <section class="gallery-slider fade-up">
-          <div class="slider-track">
-            <div class="slide"><img src="img/gallery1.jpg" alt=""></div>
-            <div class="slide"><img src="img/gallery2.jpg" alt=""></div>
-            <div class="slide"><img src="img/gallery3.jpg" alt=""></div>
-            <div class="slide"><img src="img/gallery4.jpg" alt=""></div>
-          </div>
-        </section>
+<!-- GALLERY GRID -->
+<section class="gallery-grid fade-up" id="gallery">
+  <div class="left">
+    <div class="big"><img src="img/gallery1.jpg" alt=""></div>
+    <div class="big"><img src="img/gallery2.jpg" alt=""></div>
+  </div>
+
+  <div class="right">
+    <div class="big"><img src="img/gallery3.jpg" alt=""></div>
+    <div class="big"><img src="img/gallery4.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- GALLERY SLIDER -->
+<section class="gallery-slider fade-up">
+  <div class="slider-track">
+    <div class="slide"><img src="img/gallery1.jpg" alt=""></div>
+    <div class="slide"><img src="img/gallery2.jpg" alt=""></div>
+    <div class="slide"><img src="img/gallery3.jpg" alt=""></div>
+    <div class="slide"><img src="img/gallery4.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+">
+  <img id="lightboxImg" src="" style="max-width: 90%; max-height: 90%; border-radius: 12px;">
+</div>
 
         <!-- LOVE STORY -->
         <section class="love-story fade-up">
@@ -496,10 +472,23 @@
     document.getElementById('nameWish').value=''; document.getElementById('msgWish').value='';
     return false;
   }
+  // Buka lightbox
+  document.querySelectorAll('.gallery-grid img, .gallery-slider .slide img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').style.display = 'flex';
+    });
+  });
+
+  // Tutup lightbox saat diklik background
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
 </script>
 
 </body>
 </html>
+
 
 
 
