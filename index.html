@@ -123,7 +123,8 @@
     .fade-up.show {opacity:1;transform:translateY(0);}
     .music-control {position:fixed;bottom:20px;right:20px;z-index:99999;}
     #musicBtn {width:54px; height:54px; border-radius:50%; border:none; cursor:pointer; background:rgba(255,255,255,0.95); box-shadow:0 8px 24px rgba(0,0,0,0.12); font-size:20px;}
-  /* ===== MOBILE RESPONSIVE FIX ===== */
+ 
+    /* ===== MOBILE RESPONSIVE FIX ===== */
 @media(max-width: 600px){
 
   html, body {
@@ -187,6 +188,18 @@
   cursor: pointer;
   transform: scale(0.9);
   transition: transform .3s ease;
+}
+  /* ==== PERKECIL SLIDER SECARA PAKSA ==== */
+.gallery-slider .slide {
+  min-width: 120px !important;
+  height: 80px !important;
+}
+
+.gallery-slider .slide img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 10px !important;
 }
   /* Timeline */
   .timeline {
@@ -488,6 +501,7 @@
 
 </body>
 </html>
+
 
 
 
