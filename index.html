@@ -178,24 +178,55 @@
     grid-template-columns: 1fr !important;
   }
 
-  /* Gallery */
-  .gallery-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* --- GALERI GRID UTAMA --- */
+.gallery-grid img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff;
+}
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.gallery-grid .left,
+.gallery-grid .right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.gallery-grid .left .big {
+  grid-column: span 2;
+}
+
+@media(max-width: 600px){
   .gallery-grid .left,
   .gallery-grid .right {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
+    grid-template-columns: 1fr;
   }
+  .gallery-grid .left .big {
+    grid-column: span 1;
+  }
+}
 
-  .gallery-grid img {
-    height: auto !important;
-  }
+/* --- SLIDER FOTO --- */
+.gallery-slider .slide {
+  min-width: 260px;
+  height: auto !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  .slider-track {
-    gap: 12px;
-  }
+.gallery-slider .slide img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+  background: #fff;
+}
 
   /* Timeline */
   .timeline {
@@ -469,6 +500,7 @@
 
 </body>
 </html>
+
 
 
 
