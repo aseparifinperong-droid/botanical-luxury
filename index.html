@@ -4,14 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Undangan — Botanical Luxury</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg:#f6f8f5;
-      --emerald: #9bbf9f; 
+      --emerald: #9bbf9f;
       --emerald-2:#7aa67f;
       --gold: #d4af37;
       --muted:#6b6b6b;
@@ -22,11 +19,10 @@
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#222;-webkit-font-smoothing:antialiased}
     a{color:inherit}
-
     .wrap{max-width:var(--card-w);margin:18px auto;padding:20px}
     .card{background:transparent;border-radius:12px;padding:0;overflow:hidden}
 
-    /* OPENING */
+    /* Opening */
     .opening-1{position:fixed;inset:0;display:grid;place-items:center;background:#000;z-index:9999}
     .opening-1 .bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.45)}
     .opening-1 .content{position:relative;z-index:2;text-align:center;color:#fff;padding:24px;max-width:760px;width:100%}
@@ -39,7 +35,7 @@
 
     main.container{max-width:1000px;margin:24px auto;padding:18px}
 
-    /* HERO */
+    /* Hero */
     .hero-orn {position: relative;width:100%;height:400px;padding:36px 18px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.95), #fbfbfb);box-shadow:0 8px 30px rgba(10,20,10,0.06);}
     .hero-inner{position: relative; z-index:2; display:flex; gap:20px; align-items:center; flex-wrap:wrap;}
     .hero-text{flex:1;min-width:220px;}
@@ -56,7 +52,7 @@
     .hero-orn .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;border-radius:14px;opacity:0.2;}
     .hero-orn .bg::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.4);z-index:1;border-radius:14px;}
 
-    /* SECTIONS 3–12 simplified for brevity (same as sebelumnya) */
+    /* Couple section */
     .couple-block{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center;margin-top:26px}
     @media(max-width:880px){.couple-block{grid-template-columns:1fr;}}
     .couple-photo{border-radius:12px;overflow:hidden;background:#fff;padding:6px;border:1px solid rgba(0,0,0,0.04)}
@@ -64,81 +60,253 @@
     .couple-meta{background:var(--accent);padding:18px;border-radius:12px}
     .initials{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--emerald-2)}
     .hadist{margin-top:12px;color:var(--muted);font-size:14px}
-    /* similar styles for we-are, save-date, event, live, gallery, love-story, gifts, wishes, closing */
+
+    /* We Are Getting Married */
+    .we-are{margin-top:28px;background:linear-gradient(180deg,#fff,#fff);padding:28px;border-radius:12px;display:flex;gap:20px;align-items:center}
+    .we-are .left{flex:1}
+    .we-are h3{font-family:'Playfair Display',serif;margin:0;font-size:28px;color:var(--emerald-2)}
+    .person-card{width:220px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,0.04);padding:12px;text-align:center}
+    .person-card img{width:100%;height:280px;object-fit:cover;border-radius:8px}
+    .person-card .name{font-weight:700;margin-top:8px}
+    .person-card .meta{font-size:13px;color:var(--muted);margin-top:6px}
+    .socials{display:flex;gap:8px;justify-content:flex-start;margin-top:10px}
+    .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(0,0,0,0.04);font-size:13px}
+
+    /* Save The Date */
+    .save-date{margin-top:26px;background:linear-gradient(180deg,#fff,#fff);padding:20px;border-radius:12px;display:flex;gap:24px;align-items:center;justify-content:space-between}
+    .countdown{font-weight:700;font-size:18px}
+
+    /* Event */
+    .event{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:880px){.event{grid-template-columns:1fr}}
+    .event .card{background:var(--accent);padding:16px;border-radius:12px}
+    .event .card .loc{margin-top:8px;color:var(--muted)}
+    .map-btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,var(--emerald),var(--emerald-2));color:#fff;text-decoration:none}
+
+    /* Live Streaming */
+    .live{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);text-align:center}
+    .live a.btn-live{display:inline-block;padding:10px 16px;border-radius:8px;background:#e74c3c;color:#fff;text-decoration:none}
+
+    /* Gallery */
+    .gallery-grid{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .gallery-grid .left{display:grid;grid-template-rows:repeat(2,1fr);gap:14px}
+    .gallery-grid .left .big{border-radius:12px;overflow:hidden}
+    .gallery-grid .right{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .gallery-grid img{width:100%;height:100%;object-fit:cover;display:block}
+    .gallery-slider{margin-top:12px;overflow:hidden;border-radius:12px}
+    .slider-track{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px}
+    .slide{min-width:220px;height:140px;border-radius:10px;overflow:hidden;flex:0 0 auto;scroll-snap-align:center}
+
+    /* Love Story */
+    .love-story{margin-top:22px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);position:relative}
+    .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    @media(max-width:900px){.timeline{grid-template-columns:1fr}}
+    .timeline .item{background:var(--accent);padding:12px;border-radius:10px}
+
+    /* Gifts */
+    .gifts{margin-top:18px;display:grid;grid-template-columns:1fr 320px;gap:18px}
+    @media(max-width:880px){.gifts{grid-template-columns:1fr}}
+    .gift-card{background:linear-gradient(180deg,#fff,#fff);padding:16px;border-radius:12px}
+    .copy-btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--emerald-2);color:#fff;cursor:pointer;margin-left:8px}
+
+    /* Wishes */
+    .wishes{margin-top:18px;padding:16px;background:linear-gradient(180deg,#fff,#fff);border-radius:12px}
+    .wishes form .row{display:flex;gap:8px}
+    .wishes input,.wishes textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6}
+    .wishes .list{margin-top:12px}
+
+    /* Closing */
+    .closing{margin-top:22px;padding:28px;border-radius:12px;background-size:cover;background-position:center;color:#fff;text-align:center}
+    .brand{margin-top:12px;opacity:.9}
 
     .fade-up {opacity:0;transform:translateY(40px);transition: all 1s ease;}
     .fade-up.show {opacity:1;transform:translateY(0);}
     .music-control {position:fixed;bottom:20px;right:20px;z-index:99999;}
     #musicBtn {width:54px; height:54px; border-radius:50%; border:none; cursor:pointer; background:rgba(255,255,255,0.95); box-shadow:0 8px 24px rgba(0,0,0,0.12); font-size:20px;}
-    @media (max-width: 720px) {
-      .wrap {margin:10px; padding:10px;}
-      .hero-orn {height:auto; padding:20px;}
-      .couple-block {grid-template-columns:1fr;}
-    }
   </style>
 </head>
 <body>
+<!-- Music -->
+<audio id="bgMusic" loop preload="none"><source src="music/backsound.mp3" type="audio/mpeg"></audio>
+<div class="music-control" id="musicControl" style="display:none"><button id="musicBtn" title="Play / Pause">⏸</button></div>
 
-  <!-- Music -->
-  <audio id="bgMusic" loop preload="none">
-    <source src="music/backsound.mp3" type="audio/mpeg">
-  </audio>
-  <div class="music-control" id="musicControl" style="display:none">
-    <button id="musicBtn" title="Play / Pause">⏸</button>
-  </div>
+<div class="wrap">
+  <div class="card">
 
-  <div class="wrap">
-    <div class="card">
-
-      <!-- OPENING -->
-      <div class="opening-1 fade-up" id="opening1">
-        <div class="bg fade-up" id="opening1Bg" style="background-image:url('img/bg-cover1.jpg')"></div>
-        <div class="ornament kiri"></div>
-        <div class="ornament kanan"></div>
-        <div class="content">
-          <h1>The Wedding of</h1>
-          <div class="couple fade-up" id="coupleNames">Elyana &amp; Syahril</div>
-          <div class="invite-to fade-up">Kepada Yth: <span id="guestName">Tamu Undangan</span></div>
-          <div>
-            <button class="open-btn fade-up" id="openBtn">Buka Undangan</button>
-          </div>
+    <!-- OPENING -->
+    <div class="opening-1 fade-up" id="opening1">
+      <div class="bg fade-up" id="opening1Bg" style="background-image:url('img/bg-cover1.jpg')"></div>
+      <div class="ornament kiri"></div>
+      <div class="ornament kanan"></div>
+      <div class="content">
+        <h1>The Wedding of</h1>
+        <div class="couple fade-up" id="coupleNames">Elyana &amp; Syahril</div>
+        <div class="invite-to fade-up">Kepada Yth: <span id="guestName">Tamu Undangan</span></div>
+        <div>
+          <button class="open-btn fade-up" id="openBtn">Buka Undangan</button>
         </div>
       </div>
-
-      <main class="container">
-        <div class="card">
-
-          <!-- HERO Section -->
-          <section class="hero-orn" id="section2">
-            <div class="bg fade-up" style="background-image:url('img/ormanent-mid.png')"></div>
-            <div class="butterfly b1"></div>
-            <div class="butterfly b2"></div>
-            <div class="butterfly b3"></div>
-            <div class="butterfly b4"></div>
-            <div class="butterfly b5"></div>
-            <div class="butterfly b6"></div>
-            <div class="hero-inner">
-              <div class="hero-text">
-                <h2 id="heroCouple">Elyana &amp; Syahril</h2>
-                <div class="date">Sabtu, 10 Januari 2026</div>
-              </div>
-              <div style="flex-basis:220px;min-width:160px">
-                <img src="img/ornament-kanan.png" alt="orn" style="width:100%;opacity:.95">
-              </div>
-            </div>
-          </section>
-
-          <!-- Section 3–12: copy langsung dari kode awal (couple-block, we-are, save-date, event, live, gallery, love-story, gifts, wishes, closing) -->
-
-        </div>
-      </main>
     </div>
-  </div>
+
+    <main class="container">
+      <div class="card">
+
+        <!-- HERO -->
+        <section class="hero-orn" id="section2">
+          <div class="bg fade-up" style="background-image:url('img/ormanent-mid.png')"></div>
+          <div class="butterfly b1"></div>
+          <div class="butterfly b2"></div>
+          <div class="butterfly b3"></div>
+          <div class="butterfly b4"></div>
+          <div class="butterfly b5"></div>
+          <div class="butterfly b6"></div>
+          <div class="hero-inner">
+            <div class="hero-text">
+              <h2 id="heroCouple">Elyana &amp; Syahril</h2>
+              <div class="date">Sabtu, 10 Januari 2026</div>
+            </div>
+            <div style="flex-basis:220px;min-width:160px">
+              <img src="img/ornament-kanan.png" alt="orn" style="width:100%;opacity:.95">
+            </div>
+          </div>
+        </section>
+
+        <!-- COUPLE -->
+        <section class="couple-block fade-up">
+          <div class="couple-photo fade-up"><img src="img/gallery1.jpg" alt="Couple"></div>
+          <div class="couple-meta fade-up">
+            <div class="initials" id="initials">E &amp; S</div>
+            <div class="hadist fade-up">Perkawinan adalah sunnah Rasul — (contoh hadist / ayat pendek)</div>
+          </div>
+        </section>
+
+        <!-- WE ARE GETTING MARRIED -->
+        <section class="we-are fade-up">
+          <div class="left fade-up">
+            <h3>We Are Getting Married</h3>
+            <p class="muted" style="margin-top:8px">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <a href="#wishes" class="map-btn">Konfirmasi Kehadiran</a>
+              <a href="#gallery" class="map-btn" style="background:#fff;color:var(--emerald-2);border:1px solid rgba(0,0,0,0.06)">Lihat Galeri</a>
+            </div>
+          </div>
+          <div class="person-card fade-up">
+            <img src="img/mempelai-pria.jpg" alt="Pria">
+            <div class="name">Syahril</div>
+            <div class="meta">Putra dari Bapak ... & Ibu ...</div>
+            <div class="socials"><a href="https://instagram.com/" target="_blank">@syahril <small class="muted">(Instagram)</small></a></div>
+          </div>
+          <div class="person-card fade-up">
+            <img src="img/mempelai-wanita.jpg" alt="Wanita">
+            <div class="name">Elyana</div>
+            <div class="meta">Putri dari Bapak ... & Ibu ...</div>
+            <div class="socials"><a href="https://instagram.com/" target="_blank">@elyana <small class="muted">(Instagram)</small></a></div>
+          </div>
+        </section>
+
+        <!-- SAVE THE DATE -->
+        <section class="save-date fade-up">
+          <div>
+            <div style="font-weight:700">Save the Date</div>
+            <div class="muted">Sabtu, 10 Januari 2026 — Akad & Resepsi</div>
+          </div>
+          <div class="countdown" id="countdown">-- Hari : -- Jam : -- Menit : -- Detik</div>
+        </section>
+
+        <!-- EVENT -->
+        <section class="event fade-up">
+          <div class="card">
+            <div style="font-weight:700">Akad Nikah</div>
+            <div class="loc">Masjid Al-Ikhlas, Jl. Contoh No. 1, Kota</div>
+            <a href="https://maps.google.com/?q=Masjid+Al-Ikhlas" target="_blank" class="map-btn">Lihat di Maps</a>
+          </div>
+          <div class="card">
+            <div style="font-weight:700">Resepsi</div>
+            <div class="loc">Gedung Serbaguna, Jl. Contoh No. 2, Kota</div>
+            <a href="https://maps.google.com/?q=Gedung+Serbaguna" target="_blank" class="map-btn">Lihat di Maps</a>
+          </div>
+        </section>
+
+        <!-- LIVE STREAM -->
+        <section class="live fade-up">
+          <div style="font-weight:700">Live Streaming</div>
+          <a href="https://youtube.com/" target="_blank" class="btn-live">Tonton Live</a>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery-grid fade-up" id="gallery">
+          <div class="left">
+            <div class="big"><img src="img/gallery1.jpg" alt=""></div>
+            <div class="big"><img src="img/gallery2.jpg" alt=""></div>
+          </div>
+          <div class="right">
+            <div class="big"><img src="img/gallery3.jpg" alt=""></div>
+            <div class="big"><img src="img/gallery4.jpg" alt=""></div>
+          </div>
+        </section>
+        <section class="gallery-slider fade-up">
+          <div class="slider-track">
+            <div class="slide"><img src="img/gallery1.jpg" alt=""></div>
+            <div class="slide"><img src="img/gallery2.jpg" alt=""></div>
+            <div class="slide"><img src="img/gallery3.jpg" alt=""></div>
+            <div class="slide"><img src="img/gallery4.jpg" alt=""></div>
+          </div>
+        </section>
+
+        <!-- LOVE STORY -->
+        <section class="love-story fade-up">
+          <div style="font-weight:700">Our Love Story</div>
+          <div class="timeline">
+            <div class="item fade-up"><strong>2018</strong><p>Pertemuan pertama di kampus.</p></div>
+            <div class="item fade-up"><strong>2019</strong><p>Mulai pacaran & saling mengenal.</p></div>
+            <div class="item fade-up"><strong>2025</strong><p>Lamaran dan persiapan pernikahan.</p></div>
+          </div>
+        </section>
+
+        <!-- GIFTS -->
+        <section class="gifts fade-up">
+          <div class="gift-card">
+            <div>Transfer Hadiah</div>
+            <div style="margin-top:6px">Bank BCA - 1234567890 a.n Elyana & Syahril <button class="copy-btn" onclick="copyText('1234567890')">Copy</button></div>
+          </div>
+        </section>
+
+        <!-- WISHES -->
+        <section class="wishes fade-up" id="wishes">
+          <div style="font-weight:700;margin-bottom:8px">Ucapan & Doa</div>
+          <form onsubmit="return addWish()">
+            <div class="row">
+              <input type="text" id="nameWish" placeholder="Nama">
+              <input type="text" id="msgWish" placeholder="Pesan / Doa">
+              <button type="submit" style="padding:10px 16px;border-radius:8px;background:var(--emerald-2);color:#fff;border:none;">Kirim</button>
+            </div>
+          </form>
+          <div class="list" id="wishList"></div>
+        </section>
+
+<!-- Closing section dengan background -->
+<section class="closing fade-up" style="background-image:url('img/bg-cover3.jpg'); background-size:cover; background-position:center; padding:40px; border-radius:12px; color:#fff; text-align:center;">
+  <h2 style="margin:0; font-family:'Playfair Display',serif; color:#fff">Terima Kasih</h2>
+  <p style="margin-top:8px; color:rgba(255,255,255,0.9)">Kami tunggu doa restu & kehadiran Anda.</p>
+</section>
+
+<!-- Brand footer di luar section -->
+<div class="brand" style="text-align:center; margin-top:12px; font-size:14px; opacity:.7;">
+  Powered by Botanical Luxury Wedding
+</div>
 
 <script>
+  // Fade up observer
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show')}})
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+  // Guest Name
   const guest = decodeURIComponent(new URLSearchParams(location.search).get('to')||'Tamu Undangan');
   document.getElementById('guestName').textContent = guest;
 
+  // Opening
   const openBtn = document.getElementById('openBtn');
   const opening1 = document.getElementById('opening1');
   const heroSection = document.getElementById('section2');
@@ -160,38 +328,33 @@
     else {bgMusic.pause(); musicBtn.textContent='♫';}
   });
 
-  heroSection.classList.add('show');
-
-  // Fill couple names & initials
-  const coupleNames = 'Elyana & Syahril';
-  document.getElementById('heroCouple').textContent = coupleNames;
-  document.getElementById('coupleNames').textContent = coupleNames;
-  document.getElementById('initials').textContent = coupleNames.split(' ').map(s=>s[0]).filter(Boolean).slice(0,2).join(' & ');
+  // Copy function
+  function copyText(txt){navigator.clipboard.writeText(txt);alert('Copied: '+txt);}
 
   // Countdown
-  (function(){
-    const wedding = new Date(2026,0,10,10,0,0).getTime();
-    const el = document.getElementById('countdown');
-    if(!el) return;
-    function tick(){
-      const now = Date.now();
-      const diff = wedding - now;
-      if(diff<=0){el.textContent='Hari H!'; clearInterval(iv); return;}
-      const d=Math.floor(diff/86400000);
-      const h=Math.floor((diff%86400000)/3600000);
-      const m=Math.floor((diff%3600000)/60000);
-      const s=Math.floor((diff%60000)/1000);
-      el.textContent=`${String(d).padStart(2,'0')} Hari : ${String(h).padStart(2,'0')} Jam : ${String(m).padStart(2,'0')} Menit : ${String(s).padStart(2,'0')} Detik`;
-    }
-    tick();
-    const iv=setInterval(tick,1000);
-  })();
+  const countdownEl = document.getElementById('countdown');
+  const weddingDate = new Date("Jan 10, 2026 10:00:00").getTime();
+  setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+    const d = Math.floor(diff/(1000*60*60*24));
+    const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((diff%(1000*60*60))/(1000*60));
+    const s = Math.floor((diff%(1000*60))/1000);
+    countdownEl.textContent = `${d} Hari : ${h} Jam : ${m} Menit : ${s} Detik`;
+  },1000);
 
-  // IntersectionObserver fade-up
-  const observer = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});});
-  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
-
-  // Copy functions, wishForm, slider drag => sama seperti kode awal
+  // Wishes form
+  function addWish(){
+    const name = document.getElementById('nameWish').value;
+    const msg = document.getElementById('msgWish').value;
+    if(!name||!msg)return false;
+    const div = document.createElement('div');
+    div.textContent = `${name} — "${msg}"`;
+    document.getElementById('wishList').prepend(div);
+    document.getElementById('nameWish').value=''; document.getElementById('msgWish').value='';
+    return false;
+  }
 </script>
 
 </body>
